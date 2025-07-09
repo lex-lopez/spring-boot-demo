@@ -76,18 +76,26 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>io.github.mjourard</groupId>
+                <artifactId>env-file-maven-plugin</artifactId>
+                <version>2.1.0</version>
+                <executions>
+                    <execution>
+                        <id>load-env</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>loadenv</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
-                <version>10.18.2</version>
-                <configuration>
-                    <url>${env.MYSQL_URL}</url>
-                    <user>${env.MYSQL_USER}</user>
-                    <password>${env.MYSQL_PASSWORD}=</password>
-                </configuration>
             </plugin>
         </plugins>
     </build>
